@@ -196,7 +196,7 @@ public class PlayerController2 : MonoBehaviour
     {
         Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 5);
         SoundsLib.Instance.play(transform.position, enums.Sounds.explosion);
-        Destroy(gameObject);
+        Destroy(gameObject,1);
     }
     public void setSpeed(float speed)
     {
