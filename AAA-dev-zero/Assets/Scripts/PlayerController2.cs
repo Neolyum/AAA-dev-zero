@@ -150,8 +150,27 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(Instantiate(explosion,transform.position,Quaternion.identity),5);
+        Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 5);
         SoundsLib.Instance.play(transform.position, enums.Sounds.explosion);
         Destroy(gameObject);
+    }
+    public void setSpeed(float speed)
+    {
+        movementSpeed = speed;
+    }
+
+    public float getSpeed()
+    {
+        return movementSpeed;
+    }
+
+    public void setDashCooldown(float time)
+    {
+        dashCoolDown = time;
+    }
+
+    public float getDashCooldown()
+    {
+        return dashCoolDown;
     }
 }
