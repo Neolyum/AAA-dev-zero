@@ -24,16 +24,11 @@ namespace Controller
             transform.Translate(new Vector2(Time.deltaTime * speed, 0));
         }
 
-        private void FixedUpdate()
+        public void reset()
         {
-            if (speed < 12) speed += 0.001f;
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                GameOver();
-            }
+            gameObject.transform.SetPositionAndRotation(new Vector3(0, 0, -10), Quaternion.identity);
         }
 
-        
         public Vector2 getPosition()
         {
             return transform.position;
@@ -46,15 +41,14 @@ namespace Controller
 
         public static void StartGame()
         {
+            GuiController.Instance.hideGameOver();
             SceneController.Instance.LoadScene(enums.GameScenes.Level);
         }
 
-        private void GameOver()
+        private void FixedUpdate()
         {
-            //reset all players, delete all Grids, go to menu
-            GuiController.Instance.ShowGameOver("Player1");
-
-
+            if (speed < 12) speed += 0.0015f;
         }
+
     }
 }

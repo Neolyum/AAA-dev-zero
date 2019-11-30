@@ -151,6 +151,7 @@ public class PlayerController2 : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(Instantiate(explosion,transform.position,Quaternion.identity),5);
-        Destroy(this.gameObject);
+        SoundsLib.Instance.play(transform.position, enums.Sounds.explosion);
+        Destroy(gameObject);
     }
 }

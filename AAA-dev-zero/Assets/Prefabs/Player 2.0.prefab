@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 40
   dashCoolDown: 3
-  shootingSpeed: 20
+  shootingSpeed: 40.16
   shootingCoolDown: 0.5
   firePoint: {fileID: 4787092925144154520}
   bullet: {fileID: 7132822495487542025, guid: f03e43c8361b0d144aecfb106266726a, type: 3}
