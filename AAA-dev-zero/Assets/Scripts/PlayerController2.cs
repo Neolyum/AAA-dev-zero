@@ -24,6 +24,7 @@ public class PlayerController2 : MonoBehaviour
     
     public Transform firePoint;
     public Transform bullet;
+    [SerializeField] private GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -145,5 +146,11 @@ public class PlayerController2 : MonoBehaviour
                 dashCoolDownTimer = dashCoolDown;
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(Instantiate(explosion,transform.position,Quaternion.identity),5);
+        Destroy(this.gameObject);
     }
 }

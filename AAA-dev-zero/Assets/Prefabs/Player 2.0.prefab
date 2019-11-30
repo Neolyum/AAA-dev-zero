@@ -227,6 +227,7 @@ MonoBehaviour:
   shootingCoolDown: 0.5
   firePoint: {fileID: 4787092925144154520}
   bullet: {fileID: 7132822495487542025, guid: f03e43c8361b0d144aecfb106266726a, type: 3}
+  explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1 &5191886229914558427
 GameObject:
   m_ObjectHideFlags: 0
