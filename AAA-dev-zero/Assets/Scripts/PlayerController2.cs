@@ -17,6 +17,7 @@ public class PlayerController2 : MonoBehaviour
     private bool crouch = false;
     private Vector2 dash = Vector2.zero;
     private float dashCoolDownTimer = 0f;
+    [SerializeField] private GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -81,5 +82,11 @@ public class PlayerController2 : MonoBehaviour
                 dashCoolDownTimer = dashCoolDown;
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(Instantiate(explosion,transform.position,Quaternion.identity),5);
+        Destroy(this.gameObject);
     }
 }
