@@ -7,7 +7,9 @@ namespace Controller
 
     public class CameraController : MonoBehaviour
     {
+
         private float speed = 4;
+
         public static CameraController Instance;
 
 
