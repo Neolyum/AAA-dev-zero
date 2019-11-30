@@ -9,8 +9,7 @@ using System;
 public class Buff
 {
     private int duration;
-    private string name;
-    private GameObject player;
+
     public Buff(string name, int duration, GameObject player)
     {
 
@@ -69,7 +68,7 @@ public class Buff
 
     private void speed(PlayerController2 script)
     {
-        int offset = 10;
+        int offset = 20;
         
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
@@ -92,7 +91,7 @@ public class Buff
 
     private void slowdown(PlayerController2 script)
     {
-        int offset = -10;
+        int offset = -1;
 
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);

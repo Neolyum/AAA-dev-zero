@@ -380,8 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9418c2e457619e479232cef85e567c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  speed: 1.5
 --- !u!1 &1516009407
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +436,7 @@ MonoBehaviour:
   - {fileID: 6265210685463869777, guid: 833859aedcb4f5d41a1a9178f60afec2, type: 3}
   - {fileID: 6395027414840905710, guid: b1cf5072ea3c65647bfc9b787f476f56, type: 3}
   - {fileID: 2286748121149927455, guid: 09fe4bf664626d749bfbe84cd78a32f6, type: 3}
-  - {fileID: 8278983464523902042, guid: 2d2c5a1d5b8dbbb449f3b25dab5e0319, type: 3}
+  - {fileID: 705827159876902792, guid: 2d430a15766be0b41b39ab01c7bc78d7, type: 3}
   - {fileID: 405114175579528802, guid: 3bf8d7bcc7a9e2442b7b48b0dd8fb07c, type: 3}
   - {fileID: 2659355360548041450, guid: 4f55695b6452e64499571863db701bfb, type: 3}
   - {fileID: 6230000581487587073, guid: 7f1e5650a05248f4e967a02dbbc6e3bf, type: 3}
