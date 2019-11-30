@@ -25,14 +25,14 @@ namespace Controller
         {
           
             camx = (int)CameraController.Instance.getPosition().x;
-            move = camx % 16;
+            move = camx % 20;
 
             
             if (move == 0 && last != camx)
             {
                 int rdm = Random.Range(0, grids.Length);
                 last = camx;
-                Destroy(Instantiate(grids[rdm], CameraController.Instance.getPosition() + new Vector2(16, 0), Quaternion.identity, gridsObject.transform),60);
+                Destroy(Instantiate(grids[rdm], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, gridsObject.transform),60);
             }
 
       
