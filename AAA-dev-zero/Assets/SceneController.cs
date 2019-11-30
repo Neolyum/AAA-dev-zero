@@ -5,16 +5,16 @@ using enums;
 
 namespace Controller
 {
-    public class SceneController : MonoBehaviour
+    public class SceneController : Singleton<SceneController>
     {
         #region Variables
         public GameScenes activeScene = GameScenes.Controller;
         private GameScenes loadScene = GameScenes.Controller;
         #endregion
 
-        private void OnEnable()
+        private void Start()
         {
-           // EventHandler.Instance.StartListening(GameEvent.SceneLoaded, ChangeActiveScene);
+            // EventHandler.Instance.StartListening(GameEvent.SceneLoaded, ChangeActiveScene);
         }
 
         /// <summary>

@@ -44,6 +44,10 @@ namespace Controller
             return speed;
         }
 
+        public static void StartGame()
+        {
+            SceneController.Instance.LoadScene(enums.GameScenes.Level);
+        }
 
         private void GameOver()
         {

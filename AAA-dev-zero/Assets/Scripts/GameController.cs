@@ -10,17 +10,12 @@ namespace Controller
     public class GameController : MonoBehaviour
     {
         #region Variables
-        
+
         #endregion
 
-        private bool isOut(GameObject obj)
+        private void Start()
         {
-            /*if (obj.transform.position.x-CameraController.Instance.getPosition().x < )
-            {
-
-            }*/
-            return true;
-            
+            SceneController.Instance.LoadScene(enums.GameScenes.Menu);
         }
 
 
