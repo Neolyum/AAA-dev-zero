@@ -17,11 +17,6 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (i <= 9)
-        {
-            GameObject x;
-            x = Instantiate(tileprefabs[i]) as GameObject;
-            i++;
-        }
+        
     }   
 }
