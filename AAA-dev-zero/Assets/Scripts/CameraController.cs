@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class CameraController : MonoBehaviour
+namespace Controller
 {
-    // Start is called before the first frame update
 
-
-    public float speed = 2;
-    public GameObject[] tileprefabs;
-    public Camera MainCamera;
-   
-    void Start()
+    public class CameraController : MonoBehaviour
     {
-        Instantiate(tileprefabs[0], new Vector3(2,2,2),Quaternion.identity);
-    }
-
-    // Update is called once per frame
-    void Update()
+        private float speed = 1;
+        public static CameraController Instance;
 
 
-        
-    {
-        
-        Vector2 offset = new Vector2(Time.time * speed, 1);
-        this.transform.position = offset;
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.Translate(new Vector2(Time.deltaTime * speed, 0));
+        }
+
+        public Vector2 getPosition()
+        {
+            return transform.position;
+        }
     }
 }
