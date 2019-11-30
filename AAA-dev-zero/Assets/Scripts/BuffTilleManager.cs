@@ -36,11 +36,11 @@ public class BuffTilleManager : MonoBehaviour
         }
         if (buff == "slowdown")
         {
-            new Buff(buff, 100, other_player);
+            Buff.init(buff, 0.1f, other_player);
         }
         else
         {
-            new Buff(buff, 500, player);
+            Buff.init(buff, 500, player);
         }
 
 
