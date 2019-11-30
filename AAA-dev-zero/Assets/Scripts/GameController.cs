@@ -12,7 +12,6 @@ namespace Controller
         private string lastPlayer;
         #endregion
 
-
         private void Start()
         {
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
@@ -31,6 +30,10 @@ namespace Controller
         {
 
             if (Input.GetKeyDown(KeyCode.G))
+            {
+                GameOver();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameOver();
             }
