@@ -9,6 +9,12 @@ namespace Controller
 
     public class GameController : MonoBehaviour
     {
-       
+        #region Variables
+        
+        #endregion
+
+
+
+
     }
 }
