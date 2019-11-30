@@ -44,7 +44,8 @@ namespace Controller
 
         private void Update()
         {
-            players = GameObject.FindGameObjectsWithTag("Players");
+            players = GameObject.FindGameObjectsWithTag("Player");
+
         }
         private void Start()
         {
