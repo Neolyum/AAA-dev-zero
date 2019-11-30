@@ -22,6 +22,7 @@ public class CharacterController2D : MonoBehaviour
     private float dashTime;
     private Vector3 velocitybeforeDash;
     private bool isDashing = false;
+    public Animator anim;
 
     [Header("Events")]
     [Space]
@@ -75,6 +76,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 isDashing = false;
                 m_Rigidbody2D.velocity = velocitybeforeDash;
+                anim.SetBool("isDashing", false);
             }
             else
             {
@@ -169,6 +171,11 @@ public class CharacterController2D : MonoBehaviour
     public bool isFacingRight()
     {
         return m_FacingRight;
+    }
+
+    public bool isGrounded()
+    {
+        return m_Grounded;
     }
 
 
