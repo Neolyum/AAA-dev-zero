@@ -14,20 +14,17 @@ namespace Controller
         private GameObject gridsObject;
         #endregion
         // Start is called before the first frame update
-        void Start()
-        {
-            Destroy(Instantiate(grids[0], CameraController.Instance.getPosition(), Quaternion.identity, gridsObject.transform),60);
-        }
-
-        private void Awake()
+        void Awake()
         {
             gridsObject = GameObject.Find("Grids");
-
+            Destroy(Instantiate(grids[0], CameraController.Instance.getPosition(), Quaternion.identity,gridsObject.transform),60);
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (gridsObject == null)
+                gridsObject = GameObject.Find("Grids");
             camx = (int)CameraController.Instance.getPosition().x;
             move = camx % 16;
 

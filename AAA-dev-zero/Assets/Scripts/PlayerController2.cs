@@ -65,10 +65,10 @@ public class PlayerController2 : MonoBehaviour
         dash = Vector2.zero;
     }
 
-    private void OnBecameInvisible()
+   /* private void OnBecameInvisible()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    }*/
 
     private void tryToDash()
     {

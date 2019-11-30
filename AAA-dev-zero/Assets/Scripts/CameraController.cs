@@ -7,7 +7,9 @@ namespace Controller
 
     public class CameraController : MonoBehaviour
     {
-        private float speed = 1;
+
+        private float speed = 4;
+
         public static CameraController Instance;
 
 
@@ -24,7 +26,7 @@ namespace Controller
 
         private void FixedUpdate()
         {
-            if (speed < 6) speed += 0.0005f;
+            if (speed < 12) speed += 0.001f;
             if (Input.GetKeyDown(KeyCode.G))
             {
                 GameOver();
@@ -42,6 +44,10 @@ namespace Controller
             return speed;
         }
 
+        public static void StartGame()
+        {
+            SceneController.Instance.LoadScene(enums.GameScenes.Level);
+        }
 
         private void GameOver()
         {
