@@ -12,12 +12,13 @@ namespace Controller
         private int last = -1;
         private int camx;
         private GameObject gridsObject;
+        [SerializeField] private GameObject startGrid;
         #endregion
         // Start is called before the first frame update
         void Awake()
         {
             gridsObject = GameObject.Find("Grids");
-            Destroy(Instantiate(grids[0], CameraController.Instance.getPosition(), Quaternion.identity,gridsObject.transform),60);
+            Destroy(Instantiate(startGrid, CameraController.Instance.getPosition(), Quaternion.identity,gridsObject.transform),60);
         }
 
         // Update is called once per frame

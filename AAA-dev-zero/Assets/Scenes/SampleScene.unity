@@ -436,6 +436,8 @@ MonoBehaviour:
   - {fileID: 4867974117900946769, guid: 2e6cab7fe86ab3045b50e337435645a1, type: 3}
   - {fileID: 1309539450495419631, guid: a4db22f40c26fd9479e05c591ca31f94, type: 3}
   - {fileID: 6265210685463869777, guid: ce6527966f7ddff45a334d140a32f100, type: 3}
+  startGrid: {fileID: 6909610194974313290, guid: 7d47cc094114754418c258428a724dcc,
+    type: 3}
 --- !u!1 &1852358952
 GameObject:
   m_ObjectHideFlags: 0
