@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController2 : MonoBehaviour
 {
     private CharacterController2D controller;
+    private TextMeshPro readyText;
 
 
     [SerializeField] private float movementSpeed = 40;
@@ -26,6 +28,9 @@ public class PlayerController2 : MonoBehaviour
     public Transform firePoint;
     public Transform bullet;
     [SerializeField] private GameObject explosion;
+    private bool isReady = false;
+    
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,7 @@ public class PlayerController2 : MonoBehaviour
         controller = GetComponent<CharacterController2D>();
         device = GetComponent<PlayerInput>().devices[0].name;
         Instance = this;
+        readyText = GetComponentInChildren<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -43,12 +49,29 @@ public class PlayerController2 : MonoBehaviour
         horizontalMove = moveDirection.x * movementSpeed;
         if (Mathf.Abs(moveDirection.x) < 0.2) horizontalMove = 0; //Verhindern von minimalen Movement bei controllern.
         if (Mathf.Abs(moveDirection.y) < 0.2) moveDirection.y = 0;
+        anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        if (controller.isGrounded())
+        {
+            anim.SetTrigger("stopDash");
+        }
         mouseShooting();
+    }
+
+    private void LateUpdate()
+    {
+        readyText.transform.rotation = Quaternion.identity;
     }
 
     private void OnJump()
     {
         jump = true;
+        anim.SetBool("isJumping", true);
+    }
+
+    public void OnLand()
+    {
+        anim.SetBool("isJumping", false);
+        anim.SetTrigger("stopDash");
     }
 
     private void OnMovement(InputValue value)
@@ -127,6 +150,21 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
+    private void OnReady() {
+        isReady = !isReady;
+        if (isReady)
+        {
+            readyText.text = "Ready";
+            readyText.color = new Color(0f, 1f, 0f);
+        } else
+        {
+            readyText.text = "Not ready";
+            readyText.color = new Color(1f, 0f, 0f);
+        }
+        
+
+    }
+
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
@@ -143,11 +181,13 @@ public class PlayerController2 : MonoBehaviour
                 Vector3 dashDirection = getVectorToMousePosition();
                 dash = new Vector2(dashDirection.normalized.x, dashDirection.normalized.y);
                 dashCoolDownTimer = dashCoolDown;
-            }
-            else if (moveDirection != Vector2.zero)
+
+                anim.SetBool("isDashing", true);
+            } else if (moveDirection != Vector2.zero)
             {
                 dash = moveDirection;
                 dashCoolDownTimer = dashCoolDown;
+                anim.SetBool("isDashing", true);
             }
         }
     }
