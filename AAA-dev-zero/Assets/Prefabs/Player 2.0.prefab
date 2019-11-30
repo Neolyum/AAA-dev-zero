@@ -343,7 +343,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e990b16946d35ca4c8e71710eaab1a9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c276c84c50323354cbda48d213c1a303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -460,6 +460,7 @@ MonoBehaviour:
   dashCoolDown: 3
   shootingSpeed: 40.16
   shootingCoolDown: 0.5
+  Instance: {fileID: 0}
   firePoint: {fileID: 7312279211442439970}
   bullet: {fileID: 7132822495487542025, guid: f03e43c8361b0d144aecfb106266726a, type: 3}
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
@@ -474,7 +475,7 @@ Animator:
   m_GameObject: {fileID: 5191886229583439678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0fa664e60a2f81640af64250ceb1f830, type: 2}
+  m_Controller: {fileID: 9100000, guid: 08b992921d145a74387952ad2d6f5cd4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
