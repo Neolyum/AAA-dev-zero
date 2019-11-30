@@ -21,6 +21,7 @@ public class PlayerController2 : MonoBehaviour
     private float dashCoolDownTimer = 0f;
     private float shootingCoolDownTimer = 0f;
     private string device;
+    public PlayerController2 Instance;
     
     public Transform firePoint;
     public Transform bullet;
@@ -31,6 +32,7 @@ public class PlayerController2 : MonoBehaviour
     {
         controller = GetComponent<CharacterController2D>();
         device = GetComponent<PlayerInput>().devices[0].name;
+        Instance = this;
     }
 
     // Update is called once per frame
