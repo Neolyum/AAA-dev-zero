@@ -82,4 +82,24 @@ public class PlayerController2 : MonoBehaviour
             }
         }
     }
+
+    public void setSpeed(float speed)
+    {
+        movementSpeed = speed;
+    }
+
+    public float getSpeed()
+    {
+        return movementSpeed;
+    }
+
+    public void setDashCooldown(float time)
+    {
+        dashCoolDown = time;
+    }
+
+    public float getDashCooldown()
+    {
+        return dashCoolDown;
+    }
 }
