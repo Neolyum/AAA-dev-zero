@@ -25,7 +25,7 @@ namespace Controller
         private void FixedUpdate()
         {
             if (speed < 6) speed += 0.0005f;
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 GameOver();
             }
