@@ -27,6 +27,7 @@ public class PlayerController2 : MonoBehaviour
 
     public Transform firePoint;
     public Transform bullet;
+    public GameObject gameController;
     [SerializeField] private GameObject explosion;
     private bool isReady = false;
     
@@ -35,8 +36,10 @@ public class PlayerController2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
         controller = GetComponent<CharacterController2D>();
         device = GetComponent<PlayerInput>().devices[0].name;
+        gameController.GetComponent<Controller.GameController>().addPlayer(gameObject);
         Instance = this;
         readyText = GetComponentInChildren<TextMeshPro>();
     }
@@ -165,6 +168,11 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
+    public bool isPlayerReady()
+    {
+        return isReady;
+    }
+
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dash);
@@ -221,5 +229,10 @@ public class PlayerController2 : MonoBehaviour
     public float getDashCooldownTimer()
     {
         return dashCoolDownTimer;
+    }
+
+    public void disableReadyText()
+    {
+        readyText.enabled = false;
     }
 }
