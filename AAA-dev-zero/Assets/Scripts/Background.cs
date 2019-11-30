@@ -24,7 +24,7 @@ public class Background : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        StartCoroutine("generateBackground", Controller.CameraController.Instance.getPosition());
+        //StartCoroutine("generateBackground", Controller.CameraController.Instance.getPosition());
     }
 
     // Update is called once per frame
