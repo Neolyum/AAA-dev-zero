@@ -98,7 +98,7 @@ public class PlayerController2 : MonoBehaviour
         shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
         if (shootDirection.x > transform.position.x && !controller.isFacingRight() && onlyForward) return Vector3.zero;
         if (shootDirection.x < transform.position.x && controller.isFacingRight() && onlyForward) return Vector3.zero;
-        shootDirection = (shootDirection - transform.position);
+        shootDirection = (shootDirection - firePoint.position);
         shootDirection.z = 0f;
         return shootDirection;
     }
