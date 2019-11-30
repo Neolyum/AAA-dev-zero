@@ -2,15 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class CameraController : MonoBehaviour
+namespace Controller
 {
-    private float speed = 2;
-    public Camera MainCamera;
+
+    public class CameraController : MonoBehaviour
+    {
+        private float speed = 1;
+        public static CameraController Instance;
 
 
-    // Update is called once per frame
-    void Update() {
-        transform.Translate(new Vector2(Time.deltaTime * speed, 0));
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.Translate(new Vector2(Time.deltaTime * speed, 0));
+        }
+
+        public Vector2 getPosition()
+        {
+            return transform.position;
+        }
     }
 }
