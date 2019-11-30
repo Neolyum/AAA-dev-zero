@@ -26,12 +26,14 @@ public class Buff
     {
 
 
+
         this.duration = duration;
 
         foreach(GameObject p in players)
         {
             new Buff(name, duration, p);
         }
+
         
 
     }

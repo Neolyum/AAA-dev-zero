@@ -21,7 +21,8 @@ public class PlayerController2 : MonoBehaviour
     private float dashCoolDownTimer = 0f;
     private float shootingCoolDownTimer = 0f;
     private string device;
-    
+    public PlayerController2 Instance;
+
     public Transform firePoint;
     public Transform bullet;
     [SerializeField] private GameObject explosion;
@@ -31,6 +32,7 @@ public class PlayerController2 : MonoBehaviour
     {
         controller = GetComponent<CharacterController2D>();
         device = GetComponent<PlayerInput>().devices[0].name;
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -52,7 +54,7 @@ public class PlayerController2 : MonoBehaviour
     private void OnMovement(InputValue value)
     {
         moveDirection = value.Get<Vector2>();
-        
+
     }
 
     private void OnDash()
@@ -70,7 +72,7 @@ public class PlayerController2 : MonoBehaviour
         crouch = false;
     }
 
-    private Vector3 getVectorToMousePosition(bool onlyForward=false)
+    private Vector3 getVectorToMousePosition(bool onlyForward = false)
     {
         Vector3 shootDirection = Input.mousePosition;
         shootDirection.z = 0.0f;
@@ -85,7 +87,7 @@ public class PlayerController2 : MonoBehaviour
     private void mouseShooting()
     {
         if (Input.GetMouseButton(0) && device == "Keyboard")
-        {            
+        {
             if (shootingCoolDownTimer <= 0)
             {
                 Vector3 shootDirection = getVectorToMousePosition(onlyForward: true);
@@ -111,17 +113,18 @@ public class PlayerController2 : MonoBehaviour
             if (moveDirection == Vector2.zero)
             {
                 bulletObj.GetComponent<Rigidbody2D>().velocity = firePoint.right * shootingSpeed;
-            } else
+            }
+            else
             {
                 bulletObj.GetComponent<Rigidbody2D>().velocity = moveDirection.normalized * shootingSpeed;
             }
-            
+
             foreach (Collider2D c in GetComponents<Collider2D>())
             {
                 Physics2D.IgnoreCollision(c, bulletObj.GetComponent<Collider2D>());
             }
         }
-        
+
     }
 
     void FixedUpdate()
@@ -140,7 +143,8 @@ public class PlayerController2 : MonoBehaviour
                 Vector3 dashDirection = getVectorToMousePosition();
                 dash = new Vector2(dashDirection.normalized.x, dashDirection.normalized.y);
                 dashCoolDownTimer = dashCoolDown;
-            } else if (moveDirection != Vector2.zero)
+            }
+            else if (moveDirection != Vector2.zero)
             {
                 dash = moveDirection;
                 dashCoolDownTimer = dashCoolDown;
@@ -172,5 +176,10 @@ public class PlayerController2 : MonoBehaviour
     public float getDashCooldown()
     {
         return dashCoolDown;
+    }
+
+    public float getDashCooldownTimer()
+    {
+        return dashCoolDownTimer;
     }
 }

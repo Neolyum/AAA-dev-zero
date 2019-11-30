@@ -21,7 +21,7 @@ namespace Controller
         {
             //reset all players, delete all Grids, go to menu
             GuiController.Instance.ShowGameOver(lastPlayer);
-            SoundsLib.Instance.play(CameraController.Instance.getPosition(), enums.Sounds.gameOver);
+            SoundsLib.Instance.play2D(enums.Sounds.gameOver);
             
             CameraController.Instance.reset();
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = false;
