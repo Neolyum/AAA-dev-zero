@@ -13,6 +13,15 @@ namespace Controller
         
         #endregion
 
+        private bool isOut(GameObject obj)
+        {
+            /*if (obj.transform.position.x-CameraController.Instance.getPosition().x < )
+            {
+
+            }*/
+            return true;
+            
+        }
 
 
 

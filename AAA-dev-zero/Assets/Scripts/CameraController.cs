@@ -22,9 +22,33 @@ namespace Controller
             transform.Translate(new Vector2(Time.deltaTime * speed, 0));
         }
 
+        private void FixedUpdate()
+        {
+            if (speed < 6) speed += 0.0005f;
+            if (Input.anyKeyDown)
+            {
+                GameOver();
+            }
+        }
+
+        
         public Vector2 getPosition()
         {
             return transform.position;
+        }
+
+        public float getSpeed()
+        {
+            return speed;
+        }
+
+
+        private void GameOver()
+        {
+            //reset all players, delete all Grids, go to menu
+            GuiController.Instance.ShowGameOver("Player1");
+
+
         }
     }
 }
