@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4160596679603720212}
   m_Layer: 8
   m_Name: Player 2.0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 5191886230582668134}
   - {fileID: 5191886229914558424}
+  - {fileID: 4787092925144154520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,6 +223,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 40
   dashCoolDown: 3
+  shootingSpeed: 20
+  shootingCoolDown: 0.5
+  firePoint: {fileID: 4787092925144154520}
+  bullet: {fileID: 7132822495487542025, guid: f03e43c8361b0d144aecfb106266726a, type: 3}
 --- !u!1 &5191886229914558427
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,4 +286,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5191886229583439676}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6291928386359453039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4787092925144154520}
+  m_Layer: 8
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4787092925144154520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291928386359453039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55, y: 0.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5191886229583439676}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
