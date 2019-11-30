@@ -15,7 +15,7 @@ public class Buff
     public Buff(string name, float duration, GameObject player)
     {
 
-        this.duration = duration;
+        this.duration = (int)duration;
         this.player = player;
         
 

@@ -26,19 +26,39 @@ namespace Controller
 
             if (players.Length > 0)
             {
-                GUI.Label(new Rect(10, 10, 50, 50), "Player1 Dash " + players[0].GetComponent<PlayerController2>().getDashCooldown());
+                string outs = "";
+                for (int i = 0; i < players[0].GetComponent<PlayerController2>().getDashCooldownTimer(); i++)
+                {
+                    outs += "#";
+                }
+                GUI.Label(new Rect(10, 10, 60, 50), "Player1 Dash " + outs);
             }
             if (players.Length > 1)
             {
-                GUI.Label(new Rect(Screen.width -10 -50, 10, 50, 50), "Player1 Dash " + players[1].GetComponent<PlayerController2>().getDashCooldown());
+                string outs = "";
+                for (int i = 0; i < players[1].GetComponent<PlayerController2>().getDashCooldownTimer(); i++)
+                {
+                    outs += "#";
+                }
+                GUI.Label(new Rect(Screen.width -10 -50, 10, 60, 50), "Player2 Dash " + outs);
             }
             if (players.Length > 2)
             {
-                GUI.Label(new Rect(10, Screen.height -10-50, 50, 50), "Player1 Dash " + players[23].GetComponent<PlayerController2>().getDashCooldown());
+                string outs = "";
+                for (int i = 0; i < players[2].GetComponent<PlayerController2>().getDashCooldownTimer(); i++)
+                {
+                    outs += "#";
+                }
+                GUI.Label(new Rect(10, Screen.height -10-50, 60, 50), "Player3 Dash " + outs);
             }
             if (players.Length > 3)
             {
-                GUI.Label(new Rect(Screen.width - 10 - 50, Screen.height - 10 - 50, 50, 50), "Player1 Dash " + players[3].GetComponent<PlayerController2>().getDashCooldown());
+                string outs ="";
+                for (int i = 0; i < players[3].GetComponent<PlayerController2>().getDashCooldownTimer(); i++ )
+                {
+                    outs += "#";
+                }
+                GUI.Label(new Rect(Screen.width - 10 - 50, Screen.height - 10 - 50, 60, 50), "Player4 Dash " + outs);
             }
         }
 
