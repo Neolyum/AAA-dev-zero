@@ -448,6 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1852358954}
   - component: {fileID: 1852358953}
+  - component: {fileID: 1852358955}
   m_Layer: 0
   m_Name: ActivateCamera
   m_TagString: Untagged
@@ -481,6 +482,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1852358955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852358952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67452e9fd74a41a4285e639a79104a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundTiles:
+  - {fileID: 4048434833353109558, guid: 83105e29c6dbd6c4fa832c789ff0259f, type: 3}
+  - {fileID: 3786311629906983569, guid: 425cd32c05219bc4daedac90ddf6dca1, type: 3}
+  - {fileID: 6187355046915059702, guid: 749aaa9b2c327654c8fd7c83ee934574, type: 3}
+  - {fileID: 301716817625993621, guid: ec8201541d949de478586638f9fcd844, type: 3}
+  - {fileID: 6266440664231815175, guid: cc962f29b4d12c249ab7c992bf83d488, type: 3}
 --- !u!1 &1984319675
 GameObject:
   m_ObjectHideFlags: 0
