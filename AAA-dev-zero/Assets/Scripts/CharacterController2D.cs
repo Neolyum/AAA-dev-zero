@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
-    [SerializeField] private float m_dashForce = 100f;                          // Amount of force added when the player dashes.
+    [SerializeField] private float m_dashForce = 50f;                          // Amount of force added when the player dashes.
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -19,6 +19,9 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
+    private float dashTime;
+    private Vector3 velocitybeforeDash;
+    private bool isDashing = false;
 
     [Header("Events")]
     [Space]
@@ -64,6 +67,21 @@ public class CharacterController2D : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump, Vector2 dashDirection)
     {
+
+        if (isDashing)
+        {
+            dashTime -= Time.deltaTime;
+            if (dashTime <= 0)
+            {
+                isDashing = false;
+                m_Rigidbody2D.velocity = velocitybeforeDash;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         // If crouching, check to see if the character can stand up
         if (!crouch)
         {
@@ -135,8 +153,17 @@ public class CharacterController2D : MonoBehaviour
         // Dashing like a pro
         if (dashDirection != Vector2.zero)
         {
-            m_Rigidbody2D.AddForce(dashDirection * m_dashForce, ForceMode2D.Impulse);
+            //m_Rigidbody2D.AddForce(dashDirection * m_dashForce, ForceMode2D.Impulse);
+
+            //Start dashing
+            velocitybeforeDash = m_Rigidbody2D.velocity;
+            dashTime = 0.1f;
+            m_Rigidbody2D.velocity = dashDirection * m_dashForce;
+            isDashing = true;
         }
+
+
+
     }
 
 
