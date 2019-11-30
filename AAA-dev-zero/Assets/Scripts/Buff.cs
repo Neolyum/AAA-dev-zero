@@ -4,77 +4,94 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Threading;
-
-
+using System;
 
 public class Buff
 {
     private int duration;
     private string name;
     private GameObject player;
-    public Buff(string name, float duration, GameObject player)
+    public Buff(string name, int duration, GameObject player)
     {
 
         this.duration = duration;
-        this.player = player;
-        
 
-        switch (name)
-        {
-            case "speed":
-                speed(); break;
-
-            case "dashcooldown":
-                dashcooldown(); break;
-
-            case "jumpboost":
-                jumpboost(); break;
-
-            case "slowdown":
-                slowdown(); break;
-
-            case "lowgrav":
-                lowgrav(); break;
-
-            case "mirror":
-                mirror(); break;
-
-            case "starpower":
-                starpower(); break;
-
-        }
+        PlayerController2 script = player.GetComponent<PlayerController2>();
+        choose(name, script);
 
     }
 
-    private void speed()
+
+    public Buff(string name, int duration, List<GameObject> players)
+    {
+
+
+        this.duration = duration;
+
+        foreach(GameObject p in players)
+        {
+            new Buff(name, duration, p);
+        }
+        
+
+    }
+
+
+    public void choose(string buff, PlayerController2 scipt)
+    {
+            switch (buff)
+        {
+            case "speed":
+                speed(scipt); break;
+
+            case "dashcooldown":
+                dashcooldown(scipt); break;
+
+            case "jumpboost":
+                jumpboost(scipt); break;
+
+            case "slowdown":
+                slowdown(scipt); break;
+
+            case "lowgrav":
+                lowgrav(scipt); break;
+
+            case "mirror":
+                mirror(scipt); break;
+
+            case "starpower":
+                starpower(scipt); break;
+
+    }
+}
+
+    private void speed(PlayerController2 script)
     {
         int offset = 10;
-        var script = this.player.GetComponent<PlayerController2>();
+        
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
         Thread.Sleep(this.duration);
         script.setSpeed(old_speed - offset);
     }
 
-    private void dashcooldown()
+    private void dashcooldown(PlayerController2 script)
     {
         int offset = 2;
-        var script = this.player.GetComponent<PlayerController2>();
         float old_dashcooldown = script.getDashCooldown();
         script.setDashCooldown(old_dashcooldown / offset);
         Thread.Sleep(this.duration);
     }
 
-    private void jumpboost()
+    private void jumpboost(PlayerController2 script)
     {
-        var script = this.player.GetComponent<PlayerController2>();
 
     }
 
-    private void slowdown()
+    private void slowdown(PlayerController2 script)
     {
         int offset = -10;
-        var script = this.player.GetComponent<PlayerController2>();
+
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
         Thread.Sleep(this.duration);
@@ -82,22 +99,20 @@ public class Buff
 
     }
 
-    private void lowgrav()
+    private void lowgrav(PlayerController2 script)
     {
-        var script = this.player.GetComponent<PlayerController2>();
 
     }
 
-    private void mirror()
+    private void mirror(PlayerController2 script)
     {
-        var script = this.player.GetComponent<PlayerController2>();
 
     }
 
-    private void starpower()
+    private void starpower(PlayerController2 script)
     {   
 
-        var script = this.player.GetComponent<PlayerController2>();
+        
         foreach (Collider2D hitbox in script.GetComponents<Collider2D>())
         {
             hitbox.enabled = false;

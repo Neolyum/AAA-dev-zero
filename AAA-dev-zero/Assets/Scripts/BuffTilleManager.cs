@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class BuffTilleManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private string buff;
+    [SerializeField] private string buff;
     void Start()
     {
 
@@ -33,25 +32,17 @@ public class BuffTilleManager : MonoBehaviour
                 other_player.Add(p);
             }
         }
-        
-        switch (buff)
+        if (buff == "slowdown")
         {
-            case "speed":
-                script.setSpeed(script.getSpeed() + 10);
-                break;
-
-            case "dashcooldown":
-                script.setDashCooldown(script.getDashCooldown() / 2);
-                break;
-
-            case "slowdown":
-                foreach (GameObject p in other_player)
-                {
-                    var ps = p.GetComponent<PlayerController2>();
-                    ps.setSpeed(ps.getSpeed() - 10);
-                }
-                break;
+            new Buff(buff, 10, other_player);
         }
-            
+        else
+        {
+            new Buff(buff, 5, player);
+        }
+
+
     }
+            
 }
+
