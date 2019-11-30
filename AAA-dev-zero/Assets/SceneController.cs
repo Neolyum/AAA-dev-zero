@@ -1,16 +1,15 @@
-﻿/*using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using Enums;
-using Manager;
-using DesignPatterns;
+using enums;
+
 
 namespace Controller
 {
     public class SceneController : MonoBehaviour
     {
         #region Variables
-        //public GameScene activeScene = GameScene.Manager;
-        //private GameScene loadScene = GameScene.Manager;
+        public GameScenes activeScene = GameScenes.Controller;
+        private GameScenes loadScene = GameScenes.Controller;
         #endregion
 
         private void OnEnable()
@@ -22,10 +21,10 @@ namespace Controller
         /// Load's a given scene after unloading the previous one
         /// </summary>
         /// <param name="scene"></param>
-        public void LoadScene(GameScene scene)
+        public void LoadScene(GameScenes scene)
         {
             loadScene = scene;
-            if (activeScene != GameScene.Manager)
+            if (activeScene != GameScenes.Controller)
             {
                 SceneManager.UnloadSceneAsync((int)activeScene);
                 Debug.Log("[SceneController] Unload scene: " + activeScene.ToString());
@@ -33,6 +32,9 @@ namespace Controller
 
             SceneManager.LoadScene((int)loadScene, LoadSceneMode.Additive);
             Debug.Log("[SceneController] Load scene: " + scene.ToString());
+
+            //coz we dont use eventhandlers:
+            ChangeActiveScene();
         }
 
         /// <summary>
@@ -41,20 +43,11 @@ namespace Controller
         /// <param name="scene"></param>
         private void ChangeActiveScene()
         {
-            if (activeScene != loadScene)
-            {
-                GameController.ResetCounter();
-                GameController.SetTCounter(0);
-            }
+           
             activeScene = loadScene;
-            EventHandler.Instance.TriggerEvent(GameEvent.ActiveSceneChanged);
+            //EventHandler.Instance.TriggerEvent(GameEvent.ActiveSceneChanged);
             Debug.Log("[SceneController] Active scene: " + activeScene.ToString());
-            if (activeScene != GameScene.Manager && activeScene != GameScene.Menu)
-            {
-            }
-            else
-            {
-            }
+      
         }
     }
-}*/
+}
