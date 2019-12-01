@@ -7,13 +7,14 @@ public class SoundsLib : Singleton<SoundsLib>
     #region Variables
     [SerializeField] private AudioClip[] clips;
     private AudioSource source;
+    [SerializeField]  private AudioSource musicSource;
 
     #endregion
 
     private void Start()
     {
         source = GameObject.Find("Main Camera").AddComponent<AudioSource>();
-
+        musicSource.Play();
     }
 
     public void play2D(enums.Sounds sound)
