@@ -126,6 +126,7 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_wasCrouching = false;
                     OnCrouchEvent.Invoke(false);
+                    anim.SetBool("isCrouching", false);
                 }
             }
 

@@ -112,7 +112,7 @@ public class PlayerController2 : MonoBehaviour
     private void OnCrouchUp()
     {
         crouch = false;
-        anim.SetBool("isCrouching", false);
+        //anim.SetBool("isCrouching", false);
     }
 
     private Vector3 getVectorToMousePosition(bool onlyForward = false)
