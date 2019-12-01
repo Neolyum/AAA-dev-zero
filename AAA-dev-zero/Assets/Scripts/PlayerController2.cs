@@ -69,12 +69,14 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnJump()
     {
+        if (!anim.GetBool("isJumping")) SoundsLib.Instance.play(transform.position, enums.Sounds.jump, 0.3f);
         jump = true;
         anim.SetBool("isJumping", true);
     }
 
     public void OnLand()
     {
+        Destroy(GameObject.Find("One shot audio"));
         anim.SetBool("isJumping", false);
         anim.SetTrigger("stopDash");
     }
@@ -87,6 +89,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnDash()
     {
+       
         tryToDash();
     }
 
@@ -186,6 +189,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (dashCoolDownTimer <= 0)
         {
+            SoundsLib.Instance.play(transform.position, enums.Sounds.dash, 0.3f);
             if (device == "Keyboard")
             {
                 Vector3 dashDirection = getVectorToMousePosition();

@@ -11,7 +11,6 @@ namespace Controller
         GUIStyle myStyle = new GUIStyle();
         private string winner;
         public static GuiController Instance;
-        private GameObject [] players;
         private void OnGUI()
         {
             GUI.Label(new Rect(0, 0, 100, 100), "Speed: " + CameraController.Instance.getSpeed().ToString());
@@ -25,11 +24,7 @@ namespace Controller
 
         }
 
-        private void Update()
-        {
-            players = GameObject.FindGameObjectsWithTag("Player");
-
-        }
+       
         private void Start()
         {
             myStyle.fontSize = 30;
