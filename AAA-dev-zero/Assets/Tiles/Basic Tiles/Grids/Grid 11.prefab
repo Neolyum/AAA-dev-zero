@@ -4,11 +4,7 @@
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-<<<<<<< HEAD
   m_PrefabInstance: {fileID: 7736811199188647750}
-=======
-  m_PrefabInstance: {fileID: 0}
->>>>>>> 77c9f538c1ed79386b2a34851d200f67a588aab2
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -23,14 +19,9 @@ GameObject:
 --- !u!4 &1839378176466386387
 Transform:
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
   m_CorrespondingSourceObject: {fileID: 8275474815843123861, guid: 5bdd67535a3876243b572c9a6a21bd19,
     type: 3}
   m_PrefabInstance: {fileID: 7736811199188647750}
-=======
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
->>>>>>> 77c9f538c1ed79386b2a34851d200f67a588aab2
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: -6772886796938903610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}

@@ -38,18 +38,12 @@ namespace Controller
 
             if (move == 0 && last != camx)
             {
-<<<<<<< HEAD
                 int rdmgrid = Random.Range(0, grids.Length);
                 int rdmback = Random.Range(0, backgroundTiles.Length);
                 last = camx;
                 Destroy(Instantiate(grids[rdmgrid], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, gridsObject.transform), 30);
                 Destroy(Instantiate(backgroundTiles[rdmback], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, backgroundObject.transform), 30);
             
-=======
-                rdm = Random.Range(0, grids.Length);
-                last = camx;
-                StartCoroutine("instanc");
->>>>>>> 77c9f538c1ed79386b2a34851d200f67a588aab2
             }
 
           

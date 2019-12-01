@@ -139,12 +139,8 @@ public class Buff : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Debug.Log("stopped Speedbuff");
         script.setSpeed(old_speed);
-<<<<<<< HEAD
-     
-=======
         Destroy(sp);
         Destroy(this);
->>>>>>> 77c9f538c1ed79386b2a34851d200f67a588aab2
     }
 
     private IEnumerator dashcooldown(PlayerController2 script)
