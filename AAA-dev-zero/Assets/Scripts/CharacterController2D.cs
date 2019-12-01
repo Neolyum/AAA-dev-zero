@@ -85,6 +85,17 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
+        // If crouching, check to see if the character can stand up
+        if (!crouch)
+        {
+            // If the character has a ceiling preventing them from standing up, keep them crouching
+            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround) && m_wasCrouching)
+            {
+                crouch = true;
+                m_wasCrouching = true;
+            }
+        }
+
         //only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
         {
@@ -135,18 +146,6 @@ public class CharacterController2D : MonoBehaviour
                 // ... flip the player.
                 Flip();
             }
-        }
-
-        // If crouching, check to see if the character can stand up
-        if (!crouch)
-        {
-            // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround) && m_wasCrouching)
-            {
-                crouch = true;
-                m_wasCrouching = true;
-            }
-
         }
 
         // If the player should jump...
