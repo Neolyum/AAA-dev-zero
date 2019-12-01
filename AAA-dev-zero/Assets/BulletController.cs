@@ -11,6 +11,8 @@ public class BulletController : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody2D>();
         //rb.velocity = transform.right * shootingSpeed;
+        SoundsLib.Instance.play(transform.position, enums.Sounds.shoot);
+
     }
 
     private void OnBecameInvisible()
