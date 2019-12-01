@@ -707,6 +707,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3758920018274023363}
     m_Modifications:
+    - target: {fileID: -254898413756541946, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
+        type: 3}
+      propertyPath: buff
+      value: dashcooldown
+      objectReference: {fileID: 0}
     - target: {fileID: 4501180380983839789, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
         type: 3}
       propertyPath: m_Name
