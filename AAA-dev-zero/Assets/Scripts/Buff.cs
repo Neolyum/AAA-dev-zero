@@ -10,6 +10,23 @@ public class Buff : MonoBehaviour
 {
     private float duration;
     private PlayerController2 script;
+    private string buffName;
+
+    public void setDuration(float d)
+    {
+        this.duration = d;
+    }
+
+    public void setBuffName(string b)
+    {
+        buffName = b;
+    }
+
+    public void setScript(PlayerController2 c)
+    {
+        script = c;
+    }
+
 
     /*public Buff(string name, int duration, GameObject player)
     {
@@ -20,14 +37,21 @@ public class Buff : MonoBehaviour
         choose(name, script);
 
     }*/
+
+    public string getName()
+    {
+        return "This is " + this.ToString()  + " with duration " + duration.ToString() + "and name " + buffName;
+    }
     public static void init(string name, float duration, GameObject player)
     {
-
-            player.AddComponent<Buff>();
-            player.GetComponent<Buff>().duration = duration;
-            player.GetComponent<Buff>().name = name;
-            player.GetComponent<Buff>().script = player.GetComponent<PlayerController2>();
-            player.GetComponent<Buff>().start();
+        if (p.GetComponent<Buff>() != null) return;
+        player.AddComponent<Buff>();
+        
+        player.GetComponent<Buff>().setDuration(duration);
+        player.GetComponent<Buff>().setBuffName(name);
+        player.GetComponent<Buff>().setScript(player.GetComponent<PlayerController2>());
+        Debug.Log(player.GetComponent<Buff>().getName());
+        player.GetComponent<Buff>().start();
         
 
     }
@@ -38,10 +62,13 @@ public class Buff : MonoBehaviour
 
         foreach(GameObject p in players)
         {
+            if (p.GetComponent<Buff>() != null) break;
             p.AddComponent<Buff>();
-            p.GetComponent<Buff>().duration = duration;
-            p.GetComponent<Buff>().name = name;
-            p.GetComponent<Buff>().script = p.GetComponent<PlayerController2>();
+
+            p.GetComponent<Buff>().setDuration(duration);
+            p.GetComponent<Buff>().setBuffName(name);
+            p.GetComponent<Buff>().setScript(p.GetComponent<PlayerController2>());
+            Debug.Log(p.GetComponent<Buff>().getName());
             p.GetComponent<Buff>().start();
 
         }
@@ -52,7 +79,7 @@ public class Buff : MonoBehaviour
     private void start()
     {
         PlayerController2 script = gameObject.GetComponent<PlayerController2>();
-        choose(name, script);
+        choose(buffName, script);
     }
 
 
@@ -94,7 +121,7 @@ public class Buff : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Debug.Log("stopped Speedbuff");
         script.setSpeed(old_speed - offset);
-     
+        Destroy(script.gameObject);
     }
 
     private IEnumerator dashcooldown(PlayerController2 script)
