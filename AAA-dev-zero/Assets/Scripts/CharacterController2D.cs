@@ -22,6 +22,7 @@ public class CharacterController2D : MonoBehaviour
     private float dashTime;
     private Vector3 velocitybeforeDash;
     private bool isDashing = false;
+    //private bool isCrouching = false;
     public Animator anim;
 
     [Header("Events")]
@@ -88,10 +89,23 @@ public class CharacterController2D : MonoBehaviour
         if (!crouch)
         {
             // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround) && m_wasCrouching)
             {
                 crouch = true;
             }
+            /*if (isCrouching)
+            {
+                // If the character has a ceiling preventing them from standing up, keep them crouching
+                if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+                {
+                    crouch = true;
+                }
+            }
+            else
+            {
+                isCrouching = false;
+            }*/
+
         }
 
         //only control the player if grounded or airControl is turned on
