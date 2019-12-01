@@ -144,6 +144,7 @@ public class PlayerController2 : MonoBehaviour
                     Physics2D.IgnoreCollision(c, bulletObj.GetComponent<Collider2D>());
                 }
                 bulletObj.GetComponent<Rigidbody2D>().velocity = shootDirection.normalized * shootingSpeed;
+                bulletObj.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
             }
         }
     }
@@ -155,6 +156,7 @@ public class PlayerController2 : MonoBehaviour
             anim.SetTrigger("shoot");
             shootingCoolDownTimer = shootingCoolDown;
             var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation) as Transform;
+            bulletObj.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
             if (moveDirection == Vector2.zero)
             {
                 bulletObj.GetComponent<Rigidbody2D>().velocity = firePoint.right * shootingSpeed;
@@ -273,5 +275,15 @@ public class PlayerController2 : MonoBehaviour
         readyText.text = "";
         readyText.color = color;
         updateDashCoolDownText = true;
+    }
+
+    public float getShootingCooldown()
+    {
+        return shootingCoolDown;
+    }
+
+    public void setShootingCoolDown(float cd)
+    {
+        shootingCoolDown = cd;
     }
 }

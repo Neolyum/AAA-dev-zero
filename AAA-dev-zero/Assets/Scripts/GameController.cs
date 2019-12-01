@@ -84,7 +84,11 @@ namespace Controller
             if (!gameIsRunning) startIfReady();
             if (isStarting)
             {
-                if (startCountDown <= 0) Startgame();
+                if (startCountDown <= 0)
+                {
+                    Startgame();
+                    return;
+                }
                 startCountDown -= Time.deltaTime;
                 TextController.Instance.setText(((int)(startCountDown) + 1).ToString());
             }
@@ -122,6 +126,13 @@ namespace Controller
                     }
                 }
                 isStarting = true;
+                manager.DisableJoining();
+                int i = 0;
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<PlayerController2>().disableReadyText(colors[i]);
+                    i += 1;
+                }
             }
         }
 
@@ -130,14 +141,7 @@ namespace Controller
             isStarting = false;
             startCountDown = 3f;
             GuiController.Instance.hideGameOver();
-            manager.DisableJoining();
             gameIsRunning = true;
-            int i = 0;
-            foreach (GameObject player in players)
-            {
-                player.GetComponent<PlayerController2>().disableReadyText(colors[i]);
-                i += 1;
-            }
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = true;
             SoundsLib.Instance.play(CameraController.Instance.getPosition(), enums.Sounds.button);
             SceneController.Instance.LoadScene(enums.GameScenes.Level);

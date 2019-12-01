@@ -24,7 +24,14 @@ public class BulletController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity * recoil, ForceMode2D.Impulse);
+            if (collision.gameObject.GetComponent<CharacterController2D>().isGrounded())
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity * recoil, ForceMode2D.Impulse);
+            } else
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity * recoil / 3, ForceMode2D.Impulse);
+            }
+            
         }
         Destroy(gameObject);
     }
