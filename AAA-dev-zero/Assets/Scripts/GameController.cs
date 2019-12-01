@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 namespace Controller
@@ -11,6 +12,7 @@ namespace Controller
         #region Variables
         private string lastPlayer;
         private bool gameIsRunning;
+        public PlayerInputManager manager;
         List<GameObject> players = new List<GameObject>();
         Color[] colors = { new Color(0, 1, 0, 1), 
             new Color(1, 0, 0, 1), 
@@ -45,6 +47,7 @@ namespace Controller
 
            
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
+            manager.EnableJoining();
            
         }
 
@@ -93,6 +96,7 @@ namespace Controller
 
         public void Startgame()
         {
+            manager.DisableJoining();
             gameIsRunning = true;
             int i = 0;
             foreach (GameObject player in players)
