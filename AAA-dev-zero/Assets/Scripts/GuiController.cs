@@ -18,9 +18,9 @@ namespace Controller
 
             if (showGameOver)
             {
-                GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "Game Over!\nWinner is: " + winner, myStyle);
+                GUI.Label(new Rect(Screen.width / 5f, Screen.height / 10f, 1000, 500), "Game Over! Winner is: " + winner, myStyle);
             }
-            else GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "\t\t\t\t\n\n\n ", myStyle);
+            
 
 
         }
@@ -28,7 +28,7 @@ namespace Controller
        
         private void Start()
         {
-            myStyle.fontSize = 30;
+            myStyle.fontSize = 40;
             myStyle.normal.textColor = Color.red;
         }
 
