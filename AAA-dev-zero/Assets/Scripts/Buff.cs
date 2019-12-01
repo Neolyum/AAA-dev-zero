@@ -44,7 +44,7 @@ public class Buff : MonoBehaviour
     }
     public static void init(string name, float duration, GameObject player)
     {
-        if (p.GetComponent<Buff>() != null) return;
+        if (player.GetComponent<Buff>() != null) return;
         player.AddComponent<Buff>();
         
         player.GetComponent<Buff>().setDuration(duration);
@@ -120,8 +120,8 @@ public class Buff : MonoBehaviour
         Debug.Log("Started speedbuff");
         yield return new WaitForSeconds(duration);
         Debug.Log("stopped Speedbuff");
-        script.setSpeed(old_speed - offset);
-        Destroy(script.gameObject);
+        script.setSpeed(old_speed);
+        Destroy(this);
     }
 
     private IEnumerator dashcooldown(PlayerController2 script)

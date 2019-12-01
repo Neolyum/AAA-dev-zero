@@ -12,7 +12,7 @@ namespace Controller
         private string lastPlayer;
         private bool gameIsRunning;
         List<GameObject> players = new List<GameObject>();
-        Color[] colors = { new Color(0, 1, 0, 1), 
+        Color[] colors = {
             new Color(1, 0, 0, 1), 
             new Color(0, 1, 0, 1), 
             new Color(0, 0, 1, 1), 
@@ -23,6 +23,20 @@ namespace Controller
             new Color(0, 0, 0, 1)};
         #endregion
 
+
+        private string colorToString(Color c)
+        {
+            if (c.ToString() == new Color(1, 0, 0, 1).ToString()) return "Red";
+            else if (c.ToString() == new Color(0, 1, 0, 1).ToString()) return "Green";
+            else if (c.ToString() == new Color(0, 0, 1, 1).ToString()) return "Blue";
+            else if (c.ToString() == new Color(1, 1, 0, 1).ToString()) return "Pink";
+            else if (c.ToString() == new Color(0, 1, 1, 1).ToString()) return "Yellow";
+            else if (c.ToString() == new Color(1, 0, 1, 1).ToString()) return "Purple";
+            else if (c.ToString() == new Color(1, 1, 1, 1).ToString()) return "White";
+            else if (c.ToString() == new Color(0, 0, 0, 1).ToString()) return "Black";
+            else return "Colourful";
+
+        }
         private void Start()
         {
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
@@ -55,10 +69,7 @@ namespace Controller
         private void FixedUpdate()
         {
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                GameOver();
-            }
+           
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameOver();
@@ -66,7 +77,7 @@ namespace Controller
             if (SceneController.Instance.activeScene == enums.GameScenes.Level)
             {
                 if (GameObject.Find("Player 2.0(Clone)") == null) GameOver();
-                else lastPlayer = GameObject.Find("Player 2.0(Clone)").name;
+                else lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
             }
         }
 
