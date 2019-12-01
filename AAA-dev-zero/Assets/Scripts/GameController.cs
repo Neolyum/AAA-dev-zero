@@ -107,6 +107,7 @@ namespace Controller
 
         public void Startgame()
         {
+            GuiController.Instance.hideGameOver();
             manager.DisableJoining();
             gameIsRunning = true;
             int i = 0;
