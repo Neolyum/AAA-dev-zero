@@ -50,6 +50,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (dashCoolDownTimer > 0) dashCoolDownTimer -= Time.deltaTime;
         if (shootingCoolDownTimer > 0) shootingCoolDownTimer -= Time.deltaTime;
+        anim.SetFloat("shootCoolDown", shootingCoolDownTimer);
         horizontalMove = moveDirection.x * movementSpeed;
         if (Mathf.Abs(moveDirection.x) < 0.2) horizontalMove = 0; //Verhindern von minimalen Movement bei controllern.
         if (Mathf.Abs(moveDirection.y) < 0.2) moveDirection.y = 0;
@@ -72,6 +73,7 @@ public class PlayerController2 : MonoBehaviour
         if (!anim.GetBool("isJumping")) SoundsLib.Instance.play(transform.position, enums.Sounds.jump, 0.3f);
         jump = true;
         anim.SetBool("isJumping", true);
+        anim.SetTrigger("jump");
     }
 
     public void OnLand()
@@ -96,11 +98,13 @@ public class PlayerController2 : MonoBehaviour
     private void OnCrouchDown()
     {
         crouch = true;
+        anim.SetBool("isCrouching", true);
     }
 
     private void OnCrouchUp()
     {
         crouch = false;
+        anim.SetBool("isCrouching", false);
     }
 
     private Vector3 getVectorToMousePosition(bool onlyForward = false)
@@ -124,6 +128,7 @@ public class PlayerController2 : MonoBehaviour
                 Vector3 shootDirection = getVectorToMousePosition(onlyForward: true);
                 if (shootDirection == Vector3.zero) return;
 
+                anim.SetTrigger("shoot");
                 shootingCoolDownTimer = shootingCoolDown;
                 var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation) as Transform;
                 foreach (Collider2D c in GetComponents<Collider2D>())
@@ -139,6 +144,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (shootingCoolDownTimer <= 0)
         {
+            anim.SetTrigger("shoot");
             shootingCoolDownTimer = shootingCoolDown;
             var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation) as Transform;
             if (moveDirection == Vector2.zero)
