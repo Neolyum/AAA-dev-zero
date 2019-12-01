@@ -22,7 +22,11 @@ namespace Controller
             new Color(0, 1, 1, 1),
             new Color(1, 0, 1, 1),
             new Color(1, 1, 1, 1),
-            new Color(0, 0, 0, 1)};
+            new Color(0, 0, 0, 1)
+        };
+        private bool gameOver = false;
+
+
         #endregion
 
 
@@ -45,6 +49,7 @@ namespace Controller
         }
         public IEnumerator GameOver()
         {
+            gameOver = true;
             //reset all players, delete all Grids, go to menu
             GuiController.Instance.ShowGameOver(lastPlayer);
             SoundsLib.Instance.play2D(enums.Sounds.gameOver);
@@ -83,7 +88,7 @@ namespace Controller
             }
             if (SceneController.Instance.activeScene == enums.GameScenes.Level)
             {
-                if (GameObject.FindGameObjectsWithTag("Player").Length == 1) StartCoroutine("GameOver");
+                if (GameObject.FindGameObjectsWithTag("Player").Length == 1 && !gameOver) StartCoroutine("GameOver");
                 else lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
             }
         }
