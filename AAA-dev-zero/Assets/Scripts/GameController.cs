@@ -42,6 +42,7 @@ namespace Controller
             {
                 Destroy(GameObject.Find("Player 2.0(Clone)"));
             }
+            players = new List<GameObject>();
         }
 
         private void Update()
