@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 namespace Controller
@@ -13,6 +14,8 @@ namespace Controller
         private string lastPlayer;
         private bool gameIsRunning;
         public PlayerInputManager manager;
+        private bool isStarting = false;
+        private float startCountDown = 3f;
         List<GameObject> players = new List<GameObject>();
         Color[] colors = {
             new Color(1, 0, 0, 1), 
@@ -68,6 +71,12 @@ namespace Controller
         private void Update()
         {
             if (!gameIsRunning) startIfReady();
+            if (isStarting)
+            {
+                if (startCountDown <= 0) Startgame();
+                startCountDown -= Time.deltaTime;
+                TextController.Instance.setText(((int)(startCountDown) + 1).ToString());
+            }
         }
         private void FixedUpdate()
         {
@@ -101,12 +110,14 @@ namespace Controller
                         return;
                     }
                 }
-                Startgame();
+                isStarting = true;
             }
         }
 
         public void Startgame()
         {
+            isStarting = false;
+            startCountDown = 3f;
             manager.DisableJoining();
             gameIsRunning = true;
             int i = 0;
