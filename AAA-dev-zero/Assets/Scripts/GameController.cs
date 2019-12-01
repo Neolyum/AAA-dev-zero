@@ -82,9 +82,11 @@ namespace Controller
         public void Startgame()
         {
             gameIsRunning = true;
+            int i = 0;
             foreach (GameObject player in players)
             {
-                player.GetComponent<PlayerController2>().disableReadyText();
+                player.GetComponent<PlayerController2>().disableReadyText(colors[i]);
+                i += 1;
             }
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = true;
             SoundsLib.Instance.play(CameraController.Instance.getPosition(), enums.Sounds.button);
