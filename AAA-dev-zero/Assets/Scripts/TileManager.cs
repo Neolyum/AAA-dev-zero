@@ -27,13 +27,14 @@ namespace Controller
             backgroundObject = GameObject.Find("Background");
             Destroy(Instantiate(startGrid, CameraController.Instance.getPosition(), Quaternion.identity,gridsObject.transform),60);
             Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition(), Quaternion.identity, backgroundObject.transform), 60);
+            Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition() - new Vector2(20,0), Quaternion.identity, backgroundObject.transform), 60);
         }
 
         void FixedUpdate()
         {
 
             camx = (int)CameraController.Instance.getPosition().x;
-            move = camx % 20;
+            move = camx % 19;
 
 
             if (move == 0 && last != camx)
@@ -42,7 +43,7 @@ namespace Controller
                 int rdmback = Random.Range(0, backgroundTiles.Length);
                 last = camx;
                 Destroy(Instantiate(grids[rdmgrid], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, gridsObject.transform), 30);
-                Destroy(Instantiate(backgroundTiles[rdmback], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, backgroundObject.transform), 30);
+                Destroy(Instantiate(backgroundTiles[2], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, backgroundObject.transform), 30);
             
             }
 
