@@ -74,6 +74,8 @@ namespace Controller
            
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
             manager.EnableJoining();
+            gameOver = false;
+            StopCoroutine("GameOver");
            
         }
 
@@ -97,7 +99,7 @@ namespace Controller
             }
             if (SceneController.Instance.activeScene == enums.GameScenes.Level)
             {
-                if (GameObject.FindGameObjectsWithTag("Player").Length == 1 && !gameOver) StartCoroutine("GameOver");
+                if (GameObject.FindGameObjectsWithTag("Player").Length <= 1 && !gameOver) StartCoroutine("GameOver");
                 else lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
             }
         }

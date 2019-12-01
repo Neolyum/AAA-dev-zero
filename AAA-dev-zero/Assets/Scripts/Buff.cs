@@ -149,6 +149,9 @@ public class Buff : MonoBehaviour
         float old_dashcooldown = script.getDashCooldown();
         script.setDashCooldown(old_dashcooldown / offset);
         yield return new WaitForSeconds(duration);
+        script.setDashCooldown(old_dashcooldown);
+        Destroy(this);
+        StopCoroutine("dashcooldown");
     }
 
 
