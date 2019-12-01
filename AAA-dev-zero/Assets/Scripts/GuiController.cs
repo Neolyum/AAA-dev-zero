@@ -22,7 +22,6 @@ namespace Controller
             }
             else GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "\t\t\t\t\n\n\n ", myStyle);
 
-
         }
 
        
