@@ -131,7 +131,7 @@ public class Buff : MonoBehaviour
         {
             sp = Instantiate(sparkle, gameObject.transform.position, Quaternion.identity);
             sp.transform.parent = transform;
-            sp.transform.localScale = new Vector3(2, 2, 2);
+            sp.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
