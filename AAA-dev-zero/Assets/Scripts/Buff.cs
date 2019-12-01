@@ -92,8 +92,9 @@ public class Buff : MonoBehaviour
         script.setSpeed(old_speed + offset);
         Debug.Log("Started speedbuff");
         yield return new WaitForSeconds(duration);
-        script.setSpeed(old_speed - offset);
         Debug.Log("stopped Speedbuff");
+        script.setSpeed(old_speed - offset);
+     
     }
 
     private IEnumerator dashcooldown(PlayerController2 script)
@@ -131,7 +132,7 @@ public class Buff : MonoBehaviour
 
     }
 
-    private void starpower(PlayerController2 script)
+    private IEnumerator starpower(PlayerController2 script)
     {   
 
         
@@ -139,7 +140,7 @@ public class Buff : MonoBehaviour
         {
             hitbox.enabled = false;
         }
-        Thread.Sleep(duration);
+        yield return new WaitForSeconds(duration);
         foreach (Collider2D hitbox in script.GetComponents<Collider2D>())
         {
             hitbox.enabled = true;
