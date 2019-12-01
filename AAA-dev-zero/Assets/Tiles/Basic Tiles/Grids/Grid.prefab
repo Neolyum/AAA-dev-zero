@@ -342,7 +342,7 @@ Tilemap:
   - first: {x: 4, y: -3, z: 0}
     second:
       m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -376,6 +376,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 8a5e225f3462bc24cbbcce9ea700e55c, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e7b4077420d6f244c927797aa58a2c25, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 21cfcaf34877b6745b12e3da9fd863ab, type: 3}
@@ -397,12 +401,16 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 680fb86843406b94cbeff61186b3c038, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: ad4521c3bda6b364ca637094a1212ba8, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 9a83a2e7dfaa4554585ae8f07923a438, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 1cd6e543cec92b7439403e05bacbb652, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 210c03f28a5bed04d8f18399559185c3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 9a83a2e7dfaa4554585ae8f07923a438, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 34
     m_Data:
@@ -430,7 +438,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -11, y: -6, z: 0}
-  m_Size: {x: 22, y: 9, z: 1}
+  m_Size: {x: 22, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -573,6 +581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Buff Colider
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501180380983839789, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8275474815843123861, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
         type: 3}

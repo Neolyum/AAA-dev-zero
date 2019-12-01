@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8192084719561258364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8192084719899643284}
   - component: {fileID: 8192084719899643285}
   - component: {fileID: 7350152114429692656}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,6 +204,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 8192084719561258364}
   m_CeilingCheck: {fileID: 8192084721032298946}
   m_CrouchDisableCollider: {fileID: 8192084719899643287}
+  anim: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -266,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8192084721032298946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -729,6 +729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buff Colider
       objectReference: {fileID: 0}
+    - target: {fileID: 4501180380983839789, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8275474815843123861, guid: 34dd99dcfeb0365429ad2133c9e1bf83,
         type: 3}
       propertyPath: m_LocalPosition.x

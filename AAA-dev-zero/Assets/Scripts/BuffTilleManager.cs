@@ -22,7 +22,6 @@ public class BuffTilleManager : MonoBehaviour
     {
         Debug.Log("Here!");
         GameObject player = collision.gameObject;
-        var script = player.GetComponent<PlayerController2>();
 
         GameObject[] player_array = GameObject.FindGameObjectsWithTag("Player");
         List<GameObject> all_players = new List<GameObject>(player_array);

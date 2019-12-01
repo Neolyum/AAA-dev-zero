@@ -93,7 +93,7 @@ public class Buff : MonoBehaviour
         Debug.Log("Started speedbuff");
         yield return new WaitForSeconds(duration);
         Debug.Log("stopped Speedbuff");
-        script.setSpeed(old_speed - offset);
+        script.setSpeed(old_speed);
      
     }
 

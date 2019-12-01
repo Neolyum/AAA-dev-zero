@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1266682943184732759}
   - component: {fileID: 6509155899361633803}
   - component: {fileID: 106157900855680078}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6352129383799625625}
   - component: {fileID: 6318704525392365888}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Background Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

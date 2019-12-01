@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8159193866426324967}
   - component: {fileID: 659455930463789922}
   - component: {fileID: 7745420603282435495}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092604003463896630}
   - component: {fileID: 1109371074709131949}
-  m_Layer: 31
+  m_Layer: 10
   m_Name: backgorund 2 pattet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

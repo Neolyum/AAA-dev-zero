@@ -22,7 +22,7 @@ namespace Controller
                 GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "Game Over!\nWinner is: " + winner, myStyle);
             }
             else GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "\t\t\t\t\n\n\n ", myStyle);
-        }
+      }
 
         private void Update()
         {
