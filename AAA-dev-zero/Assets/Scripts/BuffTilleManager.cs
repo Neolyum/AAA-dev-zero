@@ -5,6 +5,7 @@ public class BuffTilleManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private string buff;
+    [SerializeField] private GameObject obj;
     void Start()
     {
 
@@ -40,7 +41,7 @@ public class BuffTilleManager : MonoBehaviour
         }
         else
         {
-            Buff.init(buff, 02.5f, player);
+            Buff.init(buff, 02.5f, player, obj);
         }
 
 

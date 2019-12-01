@@ -34,6 +34,9 @@ public class PlayerController2 : MonoBehaviour
     
     public Animator anim;
 
+
+    [SerializeField] private GameObject dashTrail;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -196,6 +199,9 @@ public class PlayerController2 : MonoBehaviour
         if (dashCoolDownTimer <= 0)
         {
             SoundsLib.Instance.play(transform.position, enums.Sounds.dash, 0.3f);
+            Debug.Log(dashTrail);
+            GameObject d = Instantiate(dashTrail, transform.position, Quaternion.identity);
+            Destroy(d, 0.11f);
             if (device == "Keyboard")
             {
                 Vector3 dashDirection = getVectorToMousePosition();
@@ -216,7 +222,7 @@ public class PlayerController2 : MonoBehaviour
     {
         Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 5);
         SoundsLib.Instance.play(transform.position, enums.Sounds.explosion);
-        Destroy(gameObject,1);
+        Destroy(gameObject);
     }
     public void setSpeed(float speed)
     {
