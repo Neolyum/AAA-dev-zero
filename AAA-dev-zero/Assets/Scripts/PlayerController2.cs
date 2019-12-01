@@ -30,6 +30,7 @@ public class PlayerController2 : MonoBehaviour
     public GameObject gameController;
     [SerializeField] private GameObject explosion;
     private bool isReady = false;
+    private bool updateDashCoolDownText = false;
     
     public Animator anim;
 
@@ -52,6 +53,7 @@ public class PlayerController2 : MonoBehaviour
         horizontalMove = moveDirection.x * movementSpeed;
         if (Mathf.Abs(moveDirection.x) < 0.2) horizontalMove = 0; //Verhindern von minimalen Movement bei controllern.
         if (Mathf.Abs(moveDirection.y) < 0.2) moveDirection.y = 0;
+        if (updateDashCoolDownText) updateCoolDown();
         anim.SetFloat("Speed", Mathf.Abs(horizontalMove));
         if (controller.isGrounded())
         {
@@ -231,8 +233,22 @@ public class PlayerController2 : MonoBehaviour
         return dashCoolDownTimer;
     }
 
-    public void disableReadyText()
+    private void updateCoolDown() //DashCoolDown-Anzeige mit #
     {
-        readyText.enabled = false;
+        string outs = "";
+        for (int i = 0; i < dashCoolDownTimer * 3; i++)
+        {
+            outs += "#";
+        }
+        readyText.text = outs;
+    }
+
+
+
+    public void disableReadyText(Color color)
+    {
+        readyText.text = "";
+        readyText.color = color;
+        updateDashCoolDownText = true;
     }
 }

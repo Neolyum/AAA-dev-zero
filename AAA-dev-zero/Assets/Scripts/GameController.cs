@@ -29,6 +29,12 @@ namespace Controller
         }
         public void GameOver()
         {
+            while (GameObject.Find("Player 2.0(Clone)") != null)
+            {
+                Destroy(GameObject.Find("Player 2.0(Clone)"));
+            }
+            players = new List<GameObject>();
+
             gameIsRunning = false;
             //reset all players, delete all Grids, go to menu
             GuiController.Instance.ShowGameOver(lastPlayer);
@@ -37,14 +43,9 @@ namespace Controller
             CameraController.Instance.reset();
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = false;
 
-            while (GameObject.Find("Player 2.0(Clone)") != null)
-            {
-                Destroy(GameObject.Find("Player 2.0(Clone)"));
-            }
+           
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
-
-
-
+           
         }
 
         private void Update()
@@ -93,9 +94,11 @@ namespace Controller
         public void Startgame()
         {
             gameIsRunning = true;
+            int i = 0;
             foreach (GameObject player in players)
             {
-                player.GetComponent<PlayerController2>().disableReadyText();
+                player.GetComponent<PlayerController2>().disableReadyText(colors[i]);
+                i += 1;
             }
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = true;
             SoundsLib.Instance.play(CameraController.Instance.getPosition(), enums.Sounds.button);
