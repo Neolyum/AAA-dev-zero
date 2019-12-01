@@ -5,11 +5,34 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Threading;
 using System;
+using UnityEditor;
 
 public class Buff : MonoBehaviour
 {
     private float duration;
     private PlayerController2 script;
+    [SerializeField] private GameObject sparkle;
+    private string buffName;
+ 
+    public void setDuration(float d)
+    {
+        this.duration = d;
+    }
+
+    public void setBuffName(string b)
+    {
+        buffName = b;
+    }
+
+    public void setScript(PlayerController2 c)
+    {
+        script = c;
+    }
+
+    public void setSparkle(GameObject obj)
+    {
+        sparkle = obj;
+    }
 
     /*public Buff(string name, int duration, GameObject player)
     {
@@ -20,14 +43,26 @@ public class Buff : MonoBehaviour
         choose(name, script);
 
     }*/
-    public static void init(string name, float duration, GameObject player)
-    {
 
-            player.AddComponent<Buff>();
-            player.GetComponent<Buff>().duration = duration;
-            player.GetComponent<Buff>().name = name;
-            player.GetComponent<Buff>().script = player.GetComponent<PlayerController2>();
-            player.GetComponent<Buff>().start();
+    public string getName()
+    {
+        return "This is " + this.ToString()  + " with duration " + duration.ToString() + "and name " + buffName;
+    }
+    public static void init(string name, float duration, GameObject player, GameObject obj)
+    {
+     
+        if (player.GetComponent<Buff>() != null) return;
+       
+
+        player.AddComponent<Buff>();
+        
+        player.GetComponent<Buff>().setDuration(duration);
+        player.GetComponent<Buff>().setBuffName(name);
+        player.GetComponent<Buff>().setScript(player.GetComponent<PlayerController2>());
+        player.GetComponent<Buff>().setSparkle(obj);
+
+        Debug.Log(player.GetComponent<Buff>().getName());
+        player.GetComponent<Buff>().start();
         
 
     }
@@ -38,10 +73,14 @@ public class Buff : MonoBehaviour
 
         foreach(GameObject p in players)
         {
+            if (p.GetComponent<Buff>() != null) break;
             p.AddComponent<Buff>();
-            p.GetComponent<Buff>().duration = duration;
-            p.GetComponent<Buff>().name = name;
-            p.GetComponent<Buff>().script = p.GetComponent<PlayerController2>();
+
+            p.GetComponent<Buff>().setDuration(duration);
+            p.GetComponent<Buff>().setBuffName(name);
+            p.GetComponent<Buff>().setScript(p.GetComponent<PlayerController2>());
+
+            Debug.Log(p.GetComponent<Buff>().getName());
             p.GetComponent<Buff>().start();
 
         }
@@ -52,7 +91,7 @@ public class Buff : MonoBehaviour
     private void start()
     {
         PlayerController2 script = gameObject.GetComponent<PlayerController2>();
-        choose(name, script);
+        choose(buffName, script);
     }
 
 
@@ -86,15 +125,26 @@ public class Buff : MonoBehaviour
 
     private IEnumerator speed(PlayerController2 script)
     {
+        GameObject sp = null;
         int offset = 20;
-        
+        if (sparkle != null)
+        {
+            sp = Instantiate(sparkle, gameObject.transform.position, Quaternion.identity);
+            sp.transform.parent = transform;
+            sp.transform.localScale = new Vector3(2, 2, 2);
+        }
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
         Debug.Log("Started speedbuff");
         yield return new WaitForSeconds(duration);
         Debug.Log("stopped Speedbuff");
         script.setSpeed(old_speed);
+<<<<<<< HEAD
      
+=======
+        Destroy(sp);
+        Destroy(this);
+>>>>>>> 77c9f538c1ed79386b2a34851d200f67a588aab2
     }
 
     private IEnumerator dashcooldown(PlayerController2 script)

@@ -34,6 +34,9 @@ public class PlayerController2 : MonoBehaviour
     
     public Animator anim;
 
+
+    [SerializeField] private GameObject dashTrail;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (dashCoolDownTimer > 0) dashCoolDownTimer -= Time.deltaTime;
         if (shootingCoolDownTimer > 0) shootingCoolDownTimer -= Time.deltaTime;
+        anim.SetFloat("shootCoolDown", shootingCoolDownTimer);
         horizontalMove = moveDirection.x * movementSpeed;
         if (Mathf.Abs(moveDirection.x) < 0.2) horizontalMove = 0; //Verhindern von minimalen Movement bei controllern.
         if (Mathf.Abs(moveDirection.y) < 0.2) moveDirection.y = 0;
@@ -58,6 +62,10 @@ public class PlayerController2 : MonoBehaviour
         if (controller.isGrounded())
         {
             anim.SetTrigger("stopDash");
+            //Debug.Log("Stop2");
+        } else
+        {
+            anim.ResetTrigger("stopDash");
         }
         mouseShooting();
     }
@@ -69,14 +77,18 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnJump()
     {
+        if (!anim.GetBool("isJumping")) SoundsLib.Instance.play(transform.position, enums.Sounds.jump, 0.3f);
         jump = true;
         anim.SetBool("isJumping", true);
+        anim.SetTrigger("jump");
     }
 
     public void OnLand()
     {
+        Destroy(GameObject.Find("One shot audio"));
         anim.SetBool("isJumping", false);
         anim.SetTrigger("stopDash");
+        Debug.Log("Stop1");
     }
 
     private void OnMovement(InputValue value)
@@ -87,17 +99,20 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnDash()
     {
+       
         tryToDash();
     }
 
     private void OnCrouchDown()
     {
         crouch = true;
+        anim.SetBool("isCrouching", true);
     }
 
     private void OnCrouchUp()
     {
         crouch = false;
+        anim.SetBool("isCrouching", false);
     }
 
     private Vector3 getVectorToMousePosition(bool onlyForward = false)
@@ -121,6 +136,7 @@ public class PlayerController2 : MonoBehaviour
                 Vector3 shootDirection = getVectorToMousePosition(onlyForward: true);
                 if (shootDirection == Vector3.zero) return;
 
+                anim.SetTrigger("shoot");
                 shootingCoolDownTimer = shootingCoolDown;
                 var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation) as Transform;
                 foreach (Collider2D c in GetComponents<Collider2D>())
@@ -136,6 +152,7 @@ public class PlayerController2 : MonoBehaviour
     {
         if (shootingCoolDownTimer <= 0)
         {
+            anim.SetTrigger("shoot");
             shootingCoolDownTimer = shootingCoolDown;
             var bulletObj = Instantiate(bullet, firePoint.position, firePoint.rotation) as Transform;
             if (moveDirection == Vector2.zero)
@@ -186,6 +203,10 @@ public class PlayerController2 : MonoBehaviour
     {
         if (dashCoolDownTimer <= 0)
         {
+            SoundsLib.Instance.play(transform.position, enums.Sounds.dash, 0.3f);
+            Debug.Log(dashTrail);
+            GameObject d = Instantiate(dashTrail, transform.position, Quaternion.identity);
+            Destroy(d, 0.11f);
             if (device == "Keyboard")
             {
                 Vector3 dashDirection = getVectorToMousePosition();
@@ -193,11 +214,13 @@ public class PlayerController2 : MonoBehaviour
                 dashCoolDownTimer = dashCoolDown;
 
                 anim.SetBool("isDashing", true);
+                anim.ResetTrigger("stopDash");
             } else if (moveDirection != Vector2.zero)
             {
                 dash = moveDirection;
                 dashCoolDownTimer = dashCoolDown;
                 anim.SetBool("isDashing", true);
+                anim.ResetTrigger("stopDash");
             }
         }
     }
@@ -206,7 +229,7 @@ public class PlayerController2 : MonoBehaviour
     {
         Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 5);
         SoundsLib.Instance.play(transform.position, enums.Sounds.explosion);
-        Destroy(gameObject,1);
+        Destroy(gameObject);
     }
     public void setSpeed(float speed)
     {

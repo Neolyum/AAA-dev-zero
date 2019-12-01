@@ -14,7 +14,7 @@ public class SoundsLib : Singleton<SoundsLib>
     private void Start()
     {
         source = GameObject.Find("Main Camera").AddComponent<AudioSource>();
-        musicSource.volume = 0.2f;
+        musicSource.volume = 0.13f;
         musicSource.Play();
     }
 
@@ -26,6 +26,11 @@ public class SoundsLib : Singleton<SoundsLib>
     public void play(Vector2 position, enums.Sounds sound)
     {
         AudioSource.PlayClipAtPoint(clips[(int)sound], position, 2.0f);
+    }
+
+    public void play(Vector2 position, enums.Sounds sound, float volume)
+    {
+        AudioSource.PlayClipAtPoint(clips[(int)sound], position, volume);
     }
 }
 
