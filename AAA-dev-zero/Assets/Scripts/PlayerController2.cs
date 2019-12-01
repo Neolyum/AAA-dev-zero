@@ -62,7 +62,6 @@ public class PlayerController2 : MonoBehaviour
         if (controller.isGrounded())
         {
             anim.SetTrigger("stopDash");
-            //Debug.Log("Stop2");
         } else
         {
             anim.ResetTrigger("stopDash");
@@ -88,7 +87,6 @@ public class PlayerController2 : MonoBehaviour
         Destroy(GameObject.Find("One shot audio"));
         anim.SetBool("isJumping", false);
         anim.SetTrigger("stopDash");
-        Debug.Log("Stop1");
     }
 
     private void OnMovement(InputValue value)

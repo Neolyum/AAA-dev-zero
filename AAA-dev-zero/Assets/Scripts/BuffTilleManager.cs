@@ -40,7 +40,18 @@ public class BuffTilleManager : MonoBehaviour
         }
         else
         {
-            Buff.init(buff, 02.5f, player, obj);
+            switch (buff)
+            {
+                case "speed":
+                    Buff.init(buff, 03f, player, obj); break;
+
+                case "dashcooldown":
+                    Buff.init(buff, 02.5f, player, obj); break;
+
+                case "rapidfire":
+                    Buff.init(buff, 02.0f, player, obj); break;
+
+            }
         }
 
 

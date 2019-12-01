@@ -27,7 +27,8 @@ namespace Controller
             backgroundObject = GameObject.Find("Background");
             Destroy(Instantiate(startGrid, CameraController.Instance.getPosition(), Quaternion.identity,gridsObject.transform),60);
             Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition(), Quaternion.identity, backgroundObject.transform), 60);
-            Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition() - new Vector2(20,0), Quaternion.identity, backgroundObject.transform), 60);
+            Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition() - new Vector2(21,0), Quaternion.identity, backgroundObject.transform), 60);
+            Destroy(Instantiate(backgroundTiles[0], CameraController.Instance.getPosition() - new Vector2(10, 0), Quaternion.identity, backgroundObject.transform), 60);
         }
 
         void FixedUpdate()

@@ -105,8 +105,8 @@ public class Buff : MonoBehaviour
             case "dashcooldown":
                 StartCoroutine("dashcooldown",scipt); break;
 
-            case "jumpboost":
-                StartCoroutine("jumpboost",scipt); break;
+            case "rapidfire":
+                StartCoroutine("rapidfire",scipt); break;
 
             case "slowdown":
                 StartCoroutine("slowdown",scipt); break;
@@ -155,8 +155,16 @@ public class Buff : MonoBehaviour
     }
 
 
-    private void jumpboost(PlayerController2 script)
+    private IEnumerator rapidfire(PlayerController2 script)
     {
+        float offset = -0.4f;
+        float old_firerate = script.getShootingCooldown();
+        script.setShootingCoolDown(old_firerate + offset);
+        yield return new WaitForSeconds(duration);
+        script.setShootingCoolDown(old_firerate - offset);
+        Destroy(this);
+        StopCoroutine("rapidfire");
+
 
     }
 

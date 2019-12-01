@@ -18,7 +18,7 @@ namespace Controller
 
             if (showGameOver)
             {
-                GUI.Label(new Rect(Screen.width / 5f, Screen.height / 10f, 1000, 500), "Game Over! Winner is: " + winner, myStyle);
+                GUI.Label(new Rect(Screen.width / 5f, Screen.height / 10f, 1000, 500), "Game Over! " + winner + " Player wins!", myStyle);
             }
             
 

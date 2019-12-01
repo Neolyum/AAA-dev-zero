@@ -57,7 +57,7 @@ namespace Controller
             GuiController.Instance.ShowGameOver(lastPlayer);
             SoundsLib.Instance.play2D(enums.Sounds.gameOver);
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             
             foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -103,8 +103,9 @@ namespace Controller
             }
             if (SceneController.Instance.activeScene == enums.GameScenes.Level)
             {
+                lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
                 if (GameObject.FindGameObjectsWithTag("Player").Length <= 1 && !gameOver) StartCoroutine("GameOver");
-                else lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
+               
             }
         }
 
