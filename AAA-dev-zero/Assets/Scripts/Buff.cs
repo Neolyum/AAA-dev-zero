@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 using System.Threading;
 using System;
 
-public class Buff
+public class Buff : MonoBehaviour
 {
-    private int duration;
-    private string name;
-    private GameObject player;
-    public Buff(string name, int duration, GameObject player)
+    private float duration;
+    private PlayerController2 script;
+
+    /*public Buff(string name, int duration, GameObject player)
     {
 
         this.duration = duration;
@@ -19,23 +19,40 @@ public class Buff
         PlayerController2 script = player.GetComponent<PlayerController2>();
         choose(name, script);
 
+    }*/
+    public static void init(string name, float duration, GameObject player)
+    {
+
+            player.AddComponent<Buff>();
+            player.GetComponent<Buff>().duration = duration;
+            player.GetComponent<Buff>().name = name;
+            player.GetComponent<Buff>().script = player.GetComponent<PlayerController2>();
+            player.GetComponent<Buff>().start();
+        
+
     }
 
 
-    public Buff(string name, int duration, List<GameObject> players)
+    public static void init(string name, float duration, List<GameObject> players)
     {
-
-
-
-        this.duration = duration;
 
         foreach(GameObject p in players)
         {
-            new Buff(name, duration, p);
-        }
+            p.AddComponent<Buff>();
+            p.GetComponent<Buff>().duration = duration;
+            p.GetComponent<Buff>().name = name;
+            p.GetComponent<Buff>().script = p.GetComponent<PlayerController2>();
+            p.GetComponent<Buff>().start();
 
+        }
         
 
+    }
+
+    private void start()
+    {
+        PlayerController2 script = gameObject.GetComponent<PlayerController2>();
+        choose(name, script);
     }
 
 
@@ -44,59 +61,63 @@ public class Buff
             switch (buff)
         {
             case "speed":
-                speed(scipt); break;
+                StartCoroutine("speed",scipt); break;
 
             case "dashcooldown":
-                dashcooldown(scipt); break;
+                StartCoroutine("dashcooldown",scipt); break;
 
             case "jumpboost":
-                jumpboost(scipt); break;
+                StartCoroutine("jumpboost",scipt); break;
 
             case "slowdown":
-                slowdown(scipt); break;
+                StartCoroutine("slowdown",scipt); break;
 
             case "lowgrav":
-                lowgrav(scipt); break;
+                StartCoroutine("lowgrav",scipt); break;
 
             case "mirror":
-                mirror(scipt); break;
+                StartCoroutine("mirror",scipt); break;
 
             case "starpower":
-                starpower(scipt); break;
+                StartCoroutine("starpower",scipt); break;
 
     }
 }
 
-    private void speed(PlayerController2 script)
+    private IEnumerator speed(PlayerController2 script)
     {
-        int offset = 10;
+        int offset = 20;
         
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
-        Thread.Sleep(this.duration);
+        Debug.Log("Started speedbuff");
+        yield return new WaitForSeconds(duration);
+        Debug.Log("stopped Speedbuff");
         script.setSpeed(old_speed - offset);
+     
     }
 
-    private void dashcooldown(PlayerController2 script)
+    private IEnumerator dashcooldown(PlayerController2 script)
     {
         int offset = 2;
         float old_dashcooldown = script.getDashCooldown();
         script.setDashCooldown(old_dashcooldown / offset);
-        Thread.Sleep(this.duration);
+        yield return new WaitForSeconds(duration);
     }
+
 
     private void jumpboost(PlayerController2 script)
     {
 
     }
 
-    private void slowdown(PlayerController2 script)
+    private IEnumerator slowdown(PlayerController2 script)
     {
-        int offset = -10;
+        int offset = -1;
 
         float old_speed = script.getSpeed();
         script.setSpeed(old_speed + offset);
-        Thread.Sleep(this.duration);
+        yield return new WaitForSeconds(duration);
         script.setSpeed(old_speed - offset);
 
     }
@@ -111,7 +132,7 @@ public class Buff
 
     }
 
-    private void starpower(PlayerController2 script)
+    private IEnumerator starpower(PlayerController2 script)
     {   
 
         
@@ -119,7 +140,7 @@ public class Buff
         {
             hitbox.enabled = false;
         }
-        Thread.Sleep(duration);
+        yield return new WaitForSeconds(duration);
         foreach (Collider2D hitbox in script.GetComponents<Collider2D>())
         {
             hitbox.enabled = true;

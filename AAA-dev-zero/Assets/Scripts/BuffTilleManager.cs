@@ -17,8 +17,10 @@ public class BuffTilleManager : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Here!");
         GameObject player = collision.gameObject;
         var script = player.GetComponent<PlayerController2>();
 
@@ -34,11 +36,11 @@ public class BuffTilleManager : MonoBehaviour
         }
         if (buff == "slowdown")
         {
-            new Buff(buff, 10, other_player);
+            Buff.init(buff, 0.1f, other_player);
         }
         else
         {
-            new Buff(buff, 5, player);
+            Buff.init(buff, 500, player);
         }
 
 

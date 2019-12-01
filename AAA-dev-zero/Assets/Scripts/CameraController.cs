@@ -24,9 +24,11 @@ namespace Controller
             transform.Translate(new Vector2(Time.deltaTime * speed, 0));
         }
 
+
         public void reset()
         {
             gameObject.transform.SetPositionAndRotation(new Vector3(0, 0, -10), Quaternion.identity);
+            speed = 4;
         }
 
         public Vector2 getPosition()

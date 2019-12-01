@@ -23,7 +23,6 @@ namespace Controller
             new Color(0, 0, 0, 1)};
         #endregion
 
-
         private void Start()
         {
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
@@ -38,6 +37,11 @@ namespace Controller
             CameraController.Instance.reset();
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = false;
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
+
+            while (GameObject.Find("Player 2.0(Clone)") != null)
+            {
+                Destroy(GameObject.Find("Player 2.0(Clone)"));
+            }
         }
 
         private void Update()
@@ -48,6 +52,10 @@ namespace Controller
         {
 
             if (Input.GetKeyDown(KeyCode.G))
+            {
+                GameOver();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 GameOver();
             }
