@@ -43,19 +43,23 @@ namespace Controller
         {
             SceneController.Instance.LoadScene(enums.GameScenes.Menu);
         }
-        public void GameOver()
+        public IEnumerator GameOver()
         {
-            while (GameObject.Find("Player 2.0(Clone)") != null)
+            //reset all players, delete all Grids, go to menu
+            GuiController.Instance.ShowGameOver(lastPlayer);
+            SoundsLib.Instance.play2D(enums.Sounds.gameOver);
+
+            yield return new WaitForSeconds(3);
+            
+            foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
             {
-                Destroy(GameObject.Find("Player 2.0(Clone)"));
+                Destroy(p);
             }
             players = new List<GameObject>();
 
             gameIsRunning = false;
-            //reset all players, delete all Grids, go to menu
-            GuiController.Instance.ShowGameOver(lastPlayer);
-            SoundsLib.Instance.play2D(enums.Sounds.gameOver);
-            
+            GuiController.Instance.hideGameOver();
+
             CameraController.Instance.reset();
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = false;
 
@@ -75,11 +79,11 @@ namespace Controller
            
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameOver();
+                StartCoroutine("GameOver");
             }
             if (SceneController.Instance.activeScene == enums.GameScenes.Level)
             {
-                if (GameObject.Find("Player 2.0(Clone)") == null) GameOver();
+                if (GameObject.FindGameObjectsWithTag("Player").Length == 1) StartCoroutine("GameOver");
                 else lastPlayer = colorToString(GameObject.Find("Player 2.0(Clone)").GetComponent<SpriteRenderer>().color);
             }
         }
