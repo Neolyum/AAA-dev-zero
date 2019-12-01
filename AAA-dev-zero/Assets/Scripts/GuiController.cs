@@ -22,44 +22,6 @@ namespace Controller
                 GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "Game Over!\nWinner is: " + winner, myStyle);
             }
             else GUI.Label(new Rect(Screen.width / 4f, Screen.height / 8f, 500, 500), "\t\t\t\t\n\n\n ", myStyle);
-
-
-            if (players.Length > 0)
-            {
-                string outs = "";
-                for (int i = 0; i < players[0].GetComponent<PlayerController2>().getDashCooldownTimer()*3; i++)
-                {
-                    outs += "#";
-                }
-                GUI.Label(new Rect(10, 10, 90, 50), "Player1 Dash " + outs);
-            }
-            if (players.Length > 1)
-            {
-                string outs = "";
-                for (int i = 0; i < players[1].GetComponent<PlayerController2>().getDashCooldownTimer()*3; i++)
-                {
-                    outs += "#";
-                }
-                GUI.Label(new Rect(Screen.width -10 -50, 10, 90, 50), "Player2 Dash " + outs);
-            }
-            if (players.Length > 2)
-            {
-                string outs = "";
-                for (int i = 0; i < players[2].GetComponent<PlayerController2>().getDashCooldownTimer()*3; i++)
-                {
-                    outs += "#";
-                }
-                GUI.Label(new Rect(10, Screen.height -10-50, 90, 50), "Player3 Dash " + outs);
-            }
-            if (players.Length > 3)
-            {
-                string outs ="";
-                for (int i = 0; i < players[3].GetComponent<PlayerController2>().getDashCooldownTimer()*3; i++ )
-                {
-                    outs += "#";
-                }
-                GUI.Label(new Rect(Screen.width - 10 - 50, Screen.height - 10 - 50, 90, 50), "Player4 Dash " + outs);
-            }
         }
 
         private void Update()
