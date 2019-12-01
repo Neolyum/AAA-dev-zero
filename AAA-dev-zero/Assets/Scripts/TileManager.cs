@@ -13,6 +13,7 @@ namespace Controller
         private int camx; //position of camera
         private GameObject gridsObject;
         [SerializeField] private GameObject startGrid;
+        int rdm;
         #endregion
         // Start is called before the first frame update
         void Awake()
@@ -23,19 +24,26 @@ namespace Controller
 
         void FixedUpdate()
         {
-          
+
             camx = (int)CameraController.Instance.getPosition().x;
             move = camx % 20;
 
-            
+
             if (move == 0 && last != camx)
             {
-                int rdm = Random.Range(0, grids.Length);
+                rdm = Random.Range(0, grids.Length);
                 last = camx;
-                Destroy(Instantiate(grids[rdm], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, gridsObject.transform),60);
+                StartCoroutine("instanc");
             }
 
-      
+          
+
+        }
+
+        private void instanc()
+        {
+            Destroy(Instantiate(grids[rdm], CameraController.Instance.getPosition() + new Vector2(20, 0), Quaternion.identity, gridsObject.transform), 60);
+            StopCoroutine("instanc");
         }
     }
 }
