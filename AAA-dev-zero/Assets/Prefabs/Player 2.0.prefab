@@ -463,6 +463,7 @@ MonoBehaviour:
   Instance: {fileID: 0}
   firePoint: {fileID: 7312279211442439970}
   bullet: {fileID: 7132822495487542025, guid: f03e43c8361b0d144aecfb106266726a, type: 3}
+  gameController: {fileID: 0}
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
   anim: {fileID: 4976217103987752361}
 --- !u!95 &4976217103987752361
@@ -523,9 +524,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0043288767, y: -0.16}
+  m_Offset: {x: 0.0043288814, y: -0.1718697}
   serializedVersion: 2
-  m_Radius: 0.16035093
+  m_Radius: 0.14848126
 --- !u!1 &5977105764034777286
 GameObject:
   m_ObjectHideFlags: 0
