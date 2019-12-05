@@ -1,2 +1,3 @@
 ### To-Do-Liste / Ideenliste
-- [ ] Double Jump?
+- [ ] Double Jump (Als Powerup?)
+- [ ] Items bei bedarf einsetzen (Mario Kart)
